@@ -9,7 +9,7 @@ class TodoList extends React.Component {
         return (
             <div>
                 {this.props.todos.map(item => {
-                    return <Todo task={item.task} />
+                    return <Todo key={item.id} task={item.task} />
                 })}
             </div>
         )

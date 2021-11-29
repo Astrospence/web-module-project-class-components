@@ -26,12 +26,26 @@ class App extends React.Component {
     }
   }
 
+  //Add Item handler
+  handleAddItem = (item) => {
+    const newItem = {
+      task: item,
+      id: Date.now(),
+      purchased: false
+    }
+
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newItem]
+    });
+  };
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todos={this.state.todos}/>
-        <TodoForm />
+        <TodoForm handleAddItem={this.handleAddItem} />
       </div>
     );
   }
