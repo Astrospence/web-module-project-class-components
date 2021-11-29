@@ -31,7 +31,7 @@ class App extends React.Component {
     const newItem = {
       task: item,
       id: Date.now(),
-      purchased: false
+      completed: false
     }
 
     this.setState({
@@ -42,8 +42,11 @@ class App extends React.Component {
 
   //Clear Completed handler-prop drill to TodoForm.js
   handleClear = () => {
-    this.state.todos.filter(item => {
-      return item.purchased === false
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter(item => {
+        return (!item.completed);
+      })
     });
   }
 

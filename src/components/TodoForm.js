@@ -25,7 +25,7 @@ class TodoForm extends React.Component {
     //clear button click handler
     handleClear = e => {
         e.preventDefault();
-        this.props.handleClear;
+        this.props.handleClear();
     };
 
     render() {
