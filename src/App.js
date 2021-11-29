@@ -40,12 +40,19 @@ class App extends React.Component {
     });
   };
 
+  //Clear Completed handler
+  handleClear = () => {
+    this.state.todos.filter(item => {
+      return item.purchased === false
+    })
+  }
+
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
         <TodoList todos={this.state.todos}/>
-        <TodoForm handleAddItem={this.handleAddItem} />
+        <TodoForm handleAddItem={this.handleAddItem} handleClear={this.handleClear} />
       </div>
     );
   }
