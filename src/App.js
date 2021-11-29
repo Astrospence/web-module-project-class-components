@@ -26,7 +26,7 @@ class App extends React.Component {
     }
   }
 
-  //Add Item handler
+  //Add Item handler-prop drill to TodoForm.js
   handleAddItem = (item) => {
     const newItem = {
       task: item,
@@ -40,18 +40,32 @@ class App extends React.Component {
     });
   };
 
-  //Clear Completed handler
+  //Clear Completed handler-prop drill to TodoForm.js
   handleClear = () => {
     this.state.todos.filter(item => {
       return item.purchased === false
-    })
+    });
   }
+
+  //toggle handler-prop drill to Todo.js
+  handleToggle = (task) => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.map(index => {
+        if (index.task === task) {
+          return {...index, completed: !index.completed}
+        } else {
+          return index;
+        };
+      })
+    });
+  };
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList todos={this.state.todos}/>
+        <TodoList todos={this.state.todos} handleToggle={this.handleToggle} />
         <TodoForm handleAddItem={this.handleAddItem} handleClear={this.handleClear} />
       </div>
     );
